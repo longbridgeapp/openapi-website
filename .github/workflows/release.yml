@@ -24,15 +24,15 @@ jobs:
       - name: build release env dist file
         run: yarn build:release
 
-#      - name: upload dist to bj
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_ACCESS_KEY_SECRET }}
-#        run: |
-#          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 sync ./dist s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/ --exclude "*.map" --cache-control max-age=31536000
-#          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/ --cache-control no-cache
-#          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/en/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/en/ --cache-control no-cache
-#          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/zh-HK/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/zh-HK/ --cache-control no-cache
+      - name: upload dist to bj
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_ACCESS_KEY_SECRET }}
+        run: |
+          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 sync ./dist s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/ --exclude "*.map" --cache-control max-age=31536000
+          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/ --cache-control no-cache
+          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/en/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/en/ --cache-control no-cache
+          aws --region=${{ secrets.PROD_BJ_AWS_DEFAULT_REGION }} s3 cp ./dist/zh-HK/docs/index.html s3://${{ secrets.FE_S3_OPEN_STATIC_PROD_BJ_BUCKET }}/openapi-website/zh-HK/ --cache-control no-cache
 
       - name: upload dist to hk
         env:
